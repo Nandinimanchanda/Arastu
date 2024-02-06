@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Second Web Page</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('blue.gif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+       
+        .arastu-text {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            margin-top: 2px;
+            position: absolute;
+            top: 10%;
+            animation: pulsateAnimation 1.5s infinite alternate;
+        }
+        
+        @keyframes pulsateAnimation {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
+        }
+        
+
+        .fullscreen-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            transition: opacity 0.5s ease;
+        }
+
+        .fullscreen-toggle:hover {
+            opacity: 0.7;
+        }
+        
+  
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 0 10px;
+            border-color: transparent transparent transparent white;
+            margin-bottom: 5px;
+        }
+
+        .arrow-up {
+            transform: rotate(180deg);
+        }
+
+
+        .header {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+        }
+
+        .tab {
+            padding: 20px 40px; 
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
+            transition: opacity 1s ease, background 1s ease, transform 0.5s ease, box-shadow 0.5s ease;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px; 
+            overflow: hidden;
+        }
+
+        .tab::before,
+        .tab::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            right: 10%;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+        }
+
+        .tab::before {
+            border-bottom: 15px solid rgba(200, 200, 200, 0.8);
+            top: -15px;
+        }
+
+        .tab::after {
+            border-top: 15px solid rgba(200, 200, 200, 0.8);
+            bottom: -15px;
+        }
+
+        .tab:hover {
+            opacity: 0.7;
+            background: linear-gradient(to right, #1c1c1c, #080808);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(150, 150, 150, 0.8);
+        }
+
+        .dots {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 5px 0;
+            display: block;
+            background-color: white;
+            animation: dotAnimation 3s infinite alternate;
+        }
+
+       
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 150px; 
+            height: auto;
+        }
+        
+    </style>
+
+    <script>
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function virtualcompanion(button) {
+            fetch('/virtualcompanion', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+                    
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function aimouse(button) {
+            fetch('/ai_mouse', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+               
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+     
+        function opengame(button) {
+            fetch('/snake', { method: 'GET' })
+            .then(response => response.text())
+            .then(data => {
+           
+                button.style.backgroundColor = "";
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function asciiart(button) {
+            fetch('/ascii_art', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function sign(button) {
+            fetch('/sign', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function face(button) {
+            fetch('/face', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function changeColor(button) {
+            button.style.backgroundColor = "#FFD700"; /* Change to golden color on click */
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          
+            document.documentElement.requestFullscreen();
+        });
+    </script>
+</head>
+
+<body style="background-image: url('{{ url_for('static', filename='blue.gif') }}');">
+    <img src="{{ url_for('static', filename='ar.gif') }}" alt="Logo" style="position: absolute; top: 20px; left: 20px; width: 140px; height: auto;">
+
+    <div class="arastu-text">ARASTU</div> 
+    
+
+    <div class="header">
+     
+        <button class="tab" onclick="virtualcompanion(this); changeColor(this);">Ai Companion</button>
+        <button class="tab" onclick="aimouse(this); changeColor(this);">Ai Mouse</button>
+        <button class="tab" onclick="asciiart(this); changeColor(this);">Ascii Art</button>
+        <button class="tab" onclick="opengame(this); changeColor(this);">Game</button>
+        <button class="tab" onclick="sign(this); changeColor(this);">Sign Detection</button>
+        <button class="tab" onclick="face(this); changeColor(this);">Face Recognition</button>
+    </div>
+
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot" style="background-color: #0f0;"></div> <!-- Green dot -->
+        <div class="dot" style="background-color: #00f;"></div> <!-- Blue dot -->
+        <div class="dot" style="background-color: #ff0;"></div> <!-- Yellow dot -->
+        <div class="dot" style="background-color: #f0f;"></div> <!-- Purple dot -->
+    </div>
+
+    <div class="fullscreen-toggle" onclick="toggleFullscreen()">
+        <div class="arrow"></div>
+        <div class="arrow arrow-up"></div>
+    </div>
+</body>
+
+</html>
