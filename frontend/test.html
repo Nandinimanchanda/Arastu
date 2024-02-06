@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{{ url_for('static', filename='bg8.gif') }}") no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+
+
+
+        .corner-image {
+            position: fixed;
+            bottom: 10px;
+            left: 10px; /* Set initial position to hide the drawer */
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Set initial position to hide the drawer */
+            width: 300px;
+            height: 100%;
+            background-color: #120A2A;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: left 0.3s ease;
+        }
+
+        .button-73 {
+            appearance: none;
+            background-color: #FFFFFF;
+            border-radius: 40em;
+            padding: 15px 30px; /* Increased padding for larger buttons */
+            margin: 20px 10px;
+            border-style: none;
+            box-shadow: #ADCFFF 0 -12px 6px inset;
+            box-sizing: border-box;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -.24px;
+           
+            outline: none;
+            padding: 1rem 1.3rem;
+            quotes: auto;
+            text-align: center;
+            text-decoration: none;
+            transition: all .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+          }
+          
+          .button-73:hover {
+            background-color: #f8c1af;
+            box-shadow: #5f87db 0  -6px 8px inset;
+            transform: scale(1.125);
+          }
+          
+          .button-73:active {
+            transform: scale(1.025);
+          }
+          
+          @media (min-width: 768px) {
+            .button-73 {
+              font-size: 1.5rem;
+              padding: .75rem 2rem;
+            }
+          }
+          .centered-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .centered-label img {
+            width: 200px; /* Set the width of your GIF */
+            height: auto;
+        }
+
+        .drawer-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px; /* Increased padding for larger buttons */
+            margin: 10px 0; /* Adjusted margin for better spacing */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .drawer-button:hover {
+            background-color: #2980b9;
+        }
+        
+        
+        .large-image {
+            width: 600px; /* Adjust the width of your large image as needed */
+            height: auto;
+            margin-left: 1000px; /* Adjust the margin as needed */
+        }
+    </style>
+    <script>
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function virtualcompanion(button) {
+            fetch('/virtualcompanion', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+                    
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function aimouse(button) {
+            fetch('/ai_mouse', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+               
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+     
+        function opengame(button) {
+            fetch('/snake', { method: 'GET' })
+            .then(response => response.text())
+            .then(data => {
+           
+                button.style.backgroundColor = "";
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function asciiart(button) {
+            fetch('/ascii_art', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function sign(button) {
+            fetch('/sign', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function face(button) {
+            fetch('/face_recognition', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function keyboard(button) {
+            fetch('/keyboard', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        function fire(button) {
+            fetch('/fire', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function changeColor(button) {
+            button.style.backgroundColor = "#FFD700"; /* Change to golden color on click */
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          
+            document.documentElement.requestFullscreen();
+        });
+    </script>
+</head>
+<body>
+    
+    <!-- Image in the right-bottom corner -->
+    <img  src="{{ url_for('static', filename='robocute1-removebg-preview.png') }}" alt="Corner Image" class="corner-image" id="gudda" onclick="toggleDrawer()">
+
+    <!-- Drawer of buttons -->
+    <div class="drawer" id="drawer">
+        <button class="button-73" onclick="virtualcompanion(this)" >Ai Companion</button>
+        <button class="button-73" onclick="aimouse(this)">Ai Mouse</button>
+        <button class="button-73" onclick="keyboard(this)">Ai Keyboard</button>
+        <button class="button-73" onclick="asciiart(this)">Ascii Art</button>
+        <button class="button-73" onclick="opengame(this)">Game</button>
+        <button class="button-73" onclick="sign(this)">Sign Detection</button>
+        <button class="button-73" onclick="face(this)">Face Recognition</button>
+        <button class="button-73" onclick="fire(this)">Fire Detection</button>
+    </div>
+
+    <!-- Large image on the right side -->
+   <!-- <img  src="{{ url_for('static', filename='dostrobo2-removebg-preview.png') }}"  alt="Large Image" class="large-image"> -->
+
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const gudda = document.getElementById('gudda')
+            const currentLeft = parseInt(getComputedStyle(drawer).left);
+            const currentLeft2 = parseInt(getComputedStyle(gudda).left);
+
+            if (currentLeft < 0) {
+                drawer.style.left = '0';
+                gudda.style.left = '310px';
+            } else {
+                drawer.style.left = '-300px';
+                gudda.style.left = '10px';
+            }
+        }
+    </script>
+</body>
+</html>
